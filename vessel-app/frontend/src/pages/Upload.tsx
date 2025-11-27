@@ -181,7 +181,7 @@ export default function Upload() {
   if (!isAuthenticated) {
     return (
       <div className={styles.upload}>
-        <h1>Share a Vessel Moment</h1>
+        <h1>Share a Godly Me Moment</h1>
         <p className={styles.subtitle}>
           Sign in to share testimonies, worship moments, and encouragement with the community.
         </p>
@@ -202,7 +202,7 @@ export default function Upload() {
 
   return (
     <div className={styles.upload}>
-      <h1>Share a Vessel Moment</h1>
+      <h1>Share a Godly Me Moment</h1>
       <p className={styles.subtitle}>
         Encourage the community with what God is doing. Short testimonies, scripture reflections, and worship sessions
         are all welcome.

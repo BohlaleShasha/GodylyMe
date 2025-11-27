@@ -558,7 +558,7 @@ export default function Profile() {
           {tab === 'saved' && !savedClips.length ? (
             <div className={styles.emptyLiked}>
               <h3>No saved videos yet</h3>
-              <p>Tap Save on any Vessel moment to keep it close for future encouragement.</p>
+              <p>Tap Save on any Godly Me moment to keep it close for future encouragement.</p>
             </div>
           ) : null}
         </div>

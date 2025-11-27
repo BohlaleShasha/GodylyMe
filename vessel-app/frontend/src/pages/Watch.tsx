@@ -229,7 +229,7 @@ export default function Watch() {
   }, [queue.length, currentIndex, goToIndex])
 
   if (!clip) {
-    return <div className={styles.missing}>We couldn't find that Vessel moment.</div>
+    return <div className={styles.missing}>We couldn't find that Godly Me moment.</div>
   }
 
   const isLiked = contentService.isLiked(clip.id)
