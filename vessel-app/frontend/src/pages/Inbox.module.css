@@ -1,0 +1,1035 @@
+.inbox {
+  --inbox-bg: #f1eee1; /* changed from #f2eee1 to #f1eee1 per request */
+  --inbox-card: #4d583f;
+  /* yellow accents should use the requested light ivory */
+  --inbox-pill: #F0ECE5;
+  --inbox-accent: #5c5238;
+  --inbox-muted: #8a7b60;
+  width: min(420px, 94vw);
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem calc(var(--bottom-nav-height) + 2.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: var(--inbox-bg);
+  border-radius: 32px;
+  /* subtle green stroke around the inbox content (thinner) */
+  border: 0.5px solid #2f361f;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2.1rem;
+  color: var(--inbox-accent);
+}
+
+.hero p {
+  margin: 0.4rem 0 0;
+  color: var(--inbox-muted);
+  font-size: 0.95rem;
+}
+
+.tabBar {
+  width: 100%;
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: var(--inbox-pill);
+}
+
+.tab,
+.tabActive {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--inbox-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tabActive {
+  background: var(--inbox-accent);
+  color: #fff;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  scrollbar-width: none;
+}
+
+.panel::-webkit-scrollbar {
+  display: none;
+}
+
+.notificationCard {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: var(--inbox-card);
+  color: #fff;
+  box-shadow: 0 18px 38px -30px rgba(21, 27, 19, 0.75);
+}
+
+.notificationDismiss {
+  margin-left: auto;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.notificationDismiss:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.notificationDismiss:active {
+  transform: scale(0.96);
+}
+
+.notificationDismiss:focus-visible {
+  outline: 2px solid rgba(233, 196, 106, 0.8);
+  outline-offset: 3px;
+}
+
+.notificationIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.notificationCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.notificationMessage {
+  font-size: 0.94rem;
+  line-height: 1.35;
+}
+
+.notificationHandle {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+
+.notificationHandle:hover,
+.notificationHandle:focus-visible {
+  text-decoration: underline;
+}
+
+.notificationHandle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.notificationPreview {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.notificationTime {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.threadCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1rem 1.1rem;
+  border-radius: 20px;
+  background: var(--inbox-card);
+  box-shadow: 0 24px 48px -36px rgba(30, 35, 29, 0.85);
+  color: #fff;
+  overflow: hidden;
+  scroll-margin-top: 14vh;
+}
+
+.threadCardExpanded {
+  box-shadow: 0 26px 56px -32px rgba(30, 35, 29, 0.95);
+  height: min(76vh, calc(100vh - 220px));
+  max-height: min(76vh, calc(100vh - 220px));
+}
+
+.threadHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.threadSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.threadSummary:focus-visible {
+  outline: 2px solid rgba(233, 196, 106, 0.8);
+  outline-offset: 4px;
+}
+
+.threadSummaryActive .threadPreview {
+  color: #fff;
+}
+
+.threadAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  background: #a0a891;
+  color: #1e2415;
+  flex-shrink: 0;
+}
+
+.threadDelete {
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 0.35rem 0.9rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.threadDelete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.unread {
+  background: var(--inbox-pill);
+  color: #20160e;
+}
+
+.threadCopy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: #fff;
+}
+
+.threadTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.threadActor {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.threadActorLink {
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.threadActorLink:hover {
+  text-decoration: underline;
+  color: #e9c46a;
+}
+
+.threadActorLink:focus-visible {
+  outline: 2px solid rgba(233, 196, 106, 0.8);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.threadTime {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.threadPreview {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+}
+
+.conversation {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 0;
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.conversationOpen {
+  max-height: 100%;
+  opacity: 1;
+  flex: 1;
+  min-height: 0;
+}
+
+.conversationClosed {
+  pointer-events: none;
+}
+
+.conversationHandleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.conversationHandleLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.conversationHandle {
+  border: none;
+  background: none;
+  color: #e9c46a;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.conversationHandle:hover {
+  color: #f4d58d;
+  text-decoration: underline;
+}
+
+.conversationHandle:focus-visible {
+  outline: 2px solid rgba(233, 196, 106, 0.8);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.conversationOptions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.conversationOptionButton {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.35rem;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.06s ease;
+}
+
+.conversationOptionButton:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.conversationOptionButton:active {
+  transform: scale(0.98);
+}
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  scrollbar-width: none;
+}
+
+.messageList::-webkit-scrollbar {
+  display: none;
+}
+
+.bubble {
+  max-width: 90%;
+  padding: 0.8rem 0.95rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.bubbleThem {
+  align-self: flex-start;
+  background: var(--inbox-pill);
+  color: #43351c;
+}
+
+.bubbleMe {
+  align-self: flex-end;
+  background: var(--inbox-pill);
+  color: #3a2919;
+  font-weight: 600;
+}
+
+.bubbleMeta {
+  font-size: 0.7rem;
+  color: rgba(58, 41, 25, 0.65);
+}
+
+.quickReplies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.quickReply {
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 0.78rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.quickReply:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.composer {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-end;
+}
+
+.composer textarea {
+  flex: 1;
+  resize: none;
+  border-radius: 999px;
+  border: none;
+  padding: 0.65rem 0.95rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #2a2012;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.composer textarea:focus {
+  outline: 2px solid rgba(92, 82, 56, 0.35);
+  outline-offset: 3px;
+}
+
+.composer button {
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--inbox-pill);
+  color: #1e2415;
+  box-shadow: 0 12px 24px -12px rgba(233, 196, 106, 0.8);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+}
+
+.composer button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.composer button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px -10px rgba(233, 196, 106, 0.8);
+}
+
+.contactsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border-subtle);
+}
+
+.contactsForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.contactsForm textarea {
+  border-radius: 14px;
+  border: 1px solid var(--border-strong);
+  padding: 0.75rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.contactsForm button {
+  align-self: flex-start;
+  border-radius: 999px;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  background: linear-gradient(135deg, #c3aa63, #7f6f3d);
+  color: #1c1406;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contactError {
+  color: #ff8a85;
+  font-weight: 600;
+}
+
+.contactList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+
+.contactCard {
+  display: flex;
+  gap: 0.85rem;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(20, 20, 24, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.contactAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(16, 22, 36, 0.9);
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  color: var(--text-primary);
+}
+
+.contactDetails span {
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+}
+
+.contactDetails small {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.contactActions {
+  margin-top: 0.5rem;
+}
+
+.contactAction {
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.contactAction:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.suggestedPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* tighter spacing */
+}
+
+.uggestionCompact {
+  /* legacy name placeholder - not used directly */
+}
+
+.suggestionCard {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* reduced gap */
+  padding: 0.6rem 0.75rem; /* tighter padding */
+  border-radius: 12px; /* slightly smaller radius */
+  background: var(--inbox-card);
+  color: #fff;
+  box-shadow: 0 12px 28px -24px rgba(21, 27, 19, 0.85);
+}
+
+.suggestionAvatar {
+  width: 36px; /* smaller avatar */
+  height: 36px;
+  border-radius: 50%;
+  background: #050505;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.suggestionAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.suggestionContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem; /* tighter grouping */
+}
+
+.suggestionTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.suggestionTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.suggestionLabel {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.suggestionTextGroup strong {
+  font-size: 0.98rem;
+  color: #fff;
+}
+
+.suggestionSummary {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.8rem;
+}
+
+.suggestionMeta {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.suggestionActionsCompact {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.followButton {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 0.28rem 0.8rem; /* tighter */
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  font-size: 0.8rem;
+}
+
+.followButton:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.followButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dismissButton {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.2rem;
+}
+
+.composeLauncher {
+  margin-bottom: 0.5rem;
+}
+
+.composeButton {
+  border: 1px dashed var(--border-muted);
+  border-radius: 18px;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.composeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border-subtle);
+}
+
+.composeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.handleSuggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 22px -12px rgba(16, 18, 22, 0.15);
+  max-height: 180px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.handleSuggestions li + li {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.handleSuggestions button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.55rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  cursor: pointer;
+}
+
+.handleSuggestionName {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.handleSuggestionMeta {
+  color: var(--text-secondary);
+}
+
+.handleSuggestions::-webkit-scrollbar {
+  display: none;
+}
+
+.composeForm label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.composeForm input {
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.9rem;
+}
+
+.composeForm textarea {
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  padding: 0.75rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.composeForm button[type='submit'] {
+  align-self: flex-start;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.3rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #373f27, #2f361f);
+  color: #fff;
+  cursor: pointer;
+}
+
+.composeError {
+  color: #ff6b6b;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.composeNotice {
+  color: #2f361f;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status {
+  padding: 1.1rem;
+  border-radius: 18px;
+  border: 1px dashed rgba(92, 82, 56, 0.35);
+  text-align: center;
+  color: var(--inbox-muted);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.requestsPanel {
+  padding: 0.8rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px dashed rgba(92, 82, 56, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.requestRowHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-secondary);
+}
+
+.requestRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.requestBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.requestSender {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.requestText {
+  color: var(--text-secondary);
+}
+
+.requestMeta {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.8rem;
+}
+
+.requestActions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.requestAccept {
+  border: none;
+  background: linear-gradient(135deg, #373f27, #2f361f);
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* Placeholder hint: slightly opaque dark text to invite sending a message */
+.composer textarea::placeholder,
+.composeForm input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* Locked '@' prefix input layout */
+.handleInputWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.handlePrefix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(0,0,0,0.7);
+  font-weight: 700;
+}
+.handleInputWrap input {
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  min-width: 120px;
+}
+
+/* Composer action group */
+.composeActions {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+.secondaryButton {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  color: #0c0c0c;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.status p {
+  margin: 0;
+}
+
+.statusAction {
+  margin-top: 0.8rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  font-weight: 600;
+  background: var(--accent-strong);
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .inbox {
+    width: 100%;
+    border-radius: 0;
+    padding: 1.75rem 1rem calc(var(--bottom-nav-height) + 2.25rem);
+  }
+
+  .threadCard {
+    padding: 0.9rem 1rem;
+  }
+
+  .bubble {
+    max-width: 100%;
+  }
+
+  .quickReplies {
+    gap: 0.35rem;
+  }
+
+  .composer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .composer button {
+    width: 100%;
+  }
+
+  .suggestionCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .suggestionTopRow {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .suggestionActionsCompact {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .suggestionActionsCompact button:last-child {
+    margin-left: auto;
+  }
+}

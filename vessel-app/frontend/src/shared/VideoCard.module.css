@@ -1,0 +1,280 @@
+.card {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+  overflow: hidden;
+  background: black;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  background: #000;
+}
+
+.overlay {
+  position: absolute;
+  left: clamp(1rem, 5vw, 2rem);
+  right: clamp(3rem, 12vw, 5rem);
+  bottom: clamp(4rem, 14vw, 6.8rem);
+  padding-bottom: clamp(0.5rem, 3vw, 1.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  color: #fff;
+  z-index: 2;
+}
+
+.topMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.18s ease;
+}
+
+.avatar:hover,
+.avatar:focus-visible {
+  transform: scale(1.04);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  border: none;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  margin-right: 0.35rem;
+}
+
+.profileInfo:focus-visible {
+  outline: 2px solid rgba(116, 241, 255, 0.6);
+  outline-offset: 3px;
+}
+
+.followButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.handle {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.followButton {
+  margin-left: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(26, 34, 54, 0.6);
+  color: #fff;
+  padding: 0.35rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, border 0.18s ease;
+}
+
+.followButton:hover {
+  transform: translateY(-2px);
+  background: rgba(71, 102, 255, 0.8);
+  border-color: transparent;
+}
+
+.followButtonActive {
+  background: rgba(255, 255, 255, 0.92);
+  color: #12152a;
+  border-color: transparent;
+}
+
+.category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.25;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  opacity: 0.92;
+}
+
+.descriptionToggle {
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: #f2f6ff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.scripture {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.tagRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.22);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+
+.actions {
+  position: absolute;
+  right: clamp(1rem, 4.5vw, 1.9rem);
+  bottom: clamp(0.9rem, 9vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.55rem, 2vw, 0.95rem);
+  align-items: center;
+  z-index: 2;
+}
+
+.actionButton {
+  border: none;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.actionButton:hover {
+  transform: translateY(-3px);
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.actionButtonActive {
+  /* Remove bright blue gradient so active state doesn't change background.
+     Keep a subtle neutral background so the icon change alone indicates state. */
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+}
+
+/* Color the like button icon pink when active (liked). */
+.actionButton[data-key="like"].actionButtonActive .actionIcon,
+.actionButton[data-key="like"][aria-pressed="true"] .actionIcon {
+  color: #ff2d7a; /* pink */
+}
+
+.actionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+}
+
+.actionIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.actionCount {
+  font-size: 0.7rem;
+}
+
+.duration {
+  position: absolute;
+  right: clamp(1rem, 4vw, 1.8rem);
+  bottom: clamp(0.7rem, 4.5vw, 1.9rem);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .actions {
+    right: 1rem;
+    bottom: 4.5rem;
+  }
+
+  .duration {
+    right: 1rem;
+    bottom: 2.8rem;
+  }
+}
+
+
+
+.profileInfo span {
+  pointer-events: none;
+}
+
+
