@@ -47,14 +47,22 @@ export function getPgPool(): Pool {
   return pgPool
 }
 
-export function getRedis(): Redis {
+export function getRedis(): Redis | null {
   if (!redisClient) {
     const redisUrl = process.env.REDIS_URL
     if (!redisUrl) {
-      throw new Error('REDIS_URL is not configured')
+      console.warn('REDIS_URL is not configured, Redis will be unavailable')
+      return null
     }
     redisClient = new Redis(redisUrl, {
       maxRetriesPerRequest: 1,
+      connectTimeout: 5000,
+      lazyConnect: true, // Don't connect immediately
+    })
+
+    // Suppress unhandled error events
+    redisClient.on('error', (err) => {
+      console.error('Redis connection error:', err.message)
     })
   }
   return redisClient

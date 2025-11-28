@@ -8,9 +8,20 @@ async function handler(req: VercelRequest, res: VercelResponse) {
     await pool.query('SELECT 1')
 
     const redis = getRedis()
-    await redis.ping()
+    let redisStatus = 'unavailable'
 
-    res.json({ status: 'ok', database: 'connected', redis: 'connected' })
+    if (redis) {
+      try {
+        await redis.connect()
+        await redis.ping()
+        redisStatus = 'connected'
+      } catch (err) {
+        console.error('Redis ping failed:', err)
+        redisStatus = 'error'
+      }
+    }
+
+    res.json({ status: 'ok', database: 'connected', redis: redisStatus })
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown connectivity issue'
     res.status(503).json({ status: 'error', message })
