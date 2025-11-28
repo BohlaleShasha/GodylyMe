@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { z } from 'zod'
 import { compose, cors, errorHandler, validateBody } from '../_lib/serverless'
-import { verifyUserByCode, presentUser } from '../../backend/src/services/userService'
+import { verifyUserByCode, presentUser } from '../_lib/userService'
 
 const verifySchema = z.object({
   email: z.string().email(),

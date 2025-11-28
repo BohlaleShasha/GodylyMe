@@ -6,8 +6,8 @@ import {
   findUserByEmail,
   findUserByHandle,
   presentUser,
-} from '../../vessel-app/backend/src/services/userService'
-import { buildVerificationEmail, sendEmail } from '../../vessel-app/backend/src/services/emailService'
+} from '../_lib/userService'
+import { buildVerificationEmail, sendEmail } from '../_lib/emailService'
 
 const signupSchema = z.object({
   name: z.string().min(2).max(120),
